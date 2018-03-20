@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as path from 'path';
 
 class App {
   
@@ -14,11 +15,16 @@ class App {
     const router = express.Router()
     this.setCors(router);
 
-    router.get('/', (req, res) => {
+    this.express.use(express.static(path.join(__dirname, '/../build')));
+
+    router.get('/foobar', (req, res) => {
       res.json({
         message: 'Hello World!'
       })
     })
+    router.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname+'/../build/index.html'));
+    });
     this.express.use('/', router);
   }  
 

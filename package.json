@@ -13,11 +13,10 @@
   },
   "scripts": {
     "client": "react-scripts start",
-    "start": "npm-run-all -p client api",
+    "start": "ts-node api/index.ts",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "api": "ts-node api/index.ts"
   },
   "proxy": "http://localhost:3001"
 }
